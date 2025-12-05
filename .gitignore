@@ -1,0 +1,8 @@
+project.md
+node_modules
+.env
+dist/*
+dist
+testsprite_tests/tmp/*
+testsprite_tests/
+testsprite_tests/*
