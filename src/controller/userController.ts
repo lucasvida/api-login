@@ -5,11 +5,12 @@ import User from "../model/userModel.js";
 export const postUser = async (req: Request, res: Response) => {
     try {
         const { firstName, lastName, email, password } = req.body;
+        const sanitizedEmail = email.toString().toLowerCase().trim();
         const storedHash = bcrypt.hashSync(password, 10);
         await User.create({
             firstName,
             lastName,
-            email,
+            email: sanitizedEmail,
             password: storedHash
         });
         res.status(201).json({
@@ -30,11 +31,12 @@ export const postUser = async (req: Request, res: Response) => {
 
 export const authUser = async (req: Request, res: Response) => {
     const { email, password } = req.body;
+    const sanitizedEmail = email.toString().toLowerCase().trim();
     try {
         if (!email || !password) {
             return res.status(400).json({ error: "Missing email or password" });
         }
-        const user = await User.findOne({ email });
+        const user = await User.findOne({ email: sanitizedEmail });
         if (!user) {
             return res.status(404).json({ error: "User not found" });
         }

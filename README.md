@@ -140,7 +140,7 @@ Base URL: `http://localhost:3333`
 
 ### **1. Criar Usuário**
 
-**POST** `/v1/users`
+**POST** `/v1/users/create`
 
 Cria um novo usuário no sistema com senha criptografada.
 
@@ -177,7 +177,7 @@ Cria um novo usuário no sistema com senha criptografada.
 
 ### **2. Autenticar Usuário**
 
-**GET** `/v1/users`
+**GET** `/v1/users/auth`
 
 Autentica um usuário verificando e-mail e senha.
 

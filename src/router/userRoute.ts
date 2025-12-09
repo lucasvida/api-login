@@ -3,7 +3,7 @@ import { postUser, authUser } from "../controller/userController.js";
 
 const userRoute = express.Router();
 
-userRoute.get("/", authUser);
-userRoute.post("/", postUser);
+userRoute.get("/auth", authUser);
+userRoute.post("/create", postUser);
 
 export default userRoute;
